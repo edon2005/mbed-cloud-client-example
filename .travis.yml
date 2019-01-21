@@ -21,13 +21,13 @@ cache:
     - $HOME/.cache/apt
  
 after_success:
-  - bash -c "$STATUS" success "Build $TARGET has passed"
+  #- bash -c "$STATUS" success "Build $TARGET has passed"
  
 after_failure:
-  - bash -c "$STATUS" failure "Build $TARGET has failed"
+  #- bash -c "$STATUS" failure "Build $TARGET has failed"
  
 before_install:
-  - bash -c "$STATUS" pending "Build $TARGET in progress"
+  #- bash -c "$STATUS" pending "Build $TARGET in progress"
   # Make sure pipefail
   - set -o pipefail
   # Setup apt to cache
