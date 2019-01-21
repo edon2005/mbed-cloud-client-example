@@ -51,6 +51,7 @@ install:
   - sudo mbed deploy --verbose
   - sudo mbed new .
   #- sudo pip install -r mbed-os/requirements.txt
+  - sudo pip install colorama jinja2 intelhex junit_xml mbed_ls mbed_host_tests mbed_greentea beautifulsoup4 fuzzywuzzy pyelftools jsonschema future mbed_cloud_sdk icetea
  
 script:
   # Check that example compiles with littlefs + spif
