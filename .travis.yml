@@ -49,6 +49,7 @@ install:
   # Deploy mbed and pip dependencies
   - sudo pip install mbed-cli
   - sudo mbed deploy --verbose
+  - sudo mbed new .
   #- sudo pip install -r mbed-os/requirements.txt
  
 script:
