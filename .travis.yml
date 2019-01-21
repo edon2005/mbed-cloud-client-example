@@ -44,10 +44,10 @@ install:
   - gcc --version
   - python --version
   # Install dependencies
+  - pip install --upgrade pip
   - sudo apt-get install gcc-arm-embedded
   - arm-none-eabi-gcc --version
   # Deploy mbed and pip dependencies
-  - pip install --upgrade pip
   - pip install mbed-cli
   - mbed deploy --verbose
   - pip install -r mbed-os/requirements.txt
