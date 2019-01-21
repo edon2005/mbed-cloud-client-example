@@ -49,7 +49,7 @@ install:
   # Deploy mbed and pip dependencies
   - sudo pip install mbed-cli
   - sudo mbed deploy --verbose
-  - sudo pip install -r mbed-os/requirements.txt
+  #- sudo pip install -r mbed-os/requirements.txt
  
 script:
   # Check that example compiles with littlefs + spif
