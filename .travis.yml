@@ -3,16 +3,18 @@ python: 3.6
  
 env:
   global:
-    - >
-      STATUS=$'curl -so/dev/null --user $MBED_BOT --request POST
-      https://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/${TRAVIS_PULL_REQUEST_SHA:-$TRAVIS_COMMIT}
-      --data @- << DATA\n{
-      "state": "$0",
-      "description": "$1",
-      "context": "travis-ci/$TARGET",
-      "target_url": "https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID"
-      }\nDATA'
- 
+  - TC_HOME=$HOME/tc
+  - MBED_BUILD_TIMESTAMP=42
+  - BUILD_DIR=cloud_client 
+
+matrix:
+  include:
+  - os: linux
+    env: MBED_CLOUD=1.5.0 ARMGCC_VERSION=6.3.1
+  - os: linux
+    env: MBED_CLOUD=2.0.1.1 ARMGCC_VERSION=6.3.1
+  - os: linux
+    env: MBED_CLOUD=2.0.1.1 ARMGCC_VERSION=7.3.1
  
 cache:
   pip: true
