@@ -30,7 +30,7 @@ after_failure:
 before_install:
   #- bash -c "$STATUS" pending "Build $TARGET in progress"
   # Make sure pipefail
-  #- set -o pipefail
+  - set -o pipefail
   # Setup apt to cache
   #- mkdir -p $HOME/.cache/apt/partial
   #- sudo rm -rf /var/cache/apt/archives
@@ -40,9 +40,8 @@ before_install:
   #- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
   #- travis_retry $(! sudo apt-get update 2>&1 | grep FAILED )
   #- sudo pip install --upgrade pip 
-  - sudo pip install -U pip wheel
-  - sudo pip install mbed-cli
-  - sudo mbed deploy
+  #- sudo pip install mbed-cli
+  #- sudo mbed deploy
 install:
   # Print versions we use
   - gcc --version
@@ -51,11 +50,13 @@ install:
   - sudo apt-get install gcc-arm-embedded
   - arm-none-eabi-gcc --version
   # Deploy mbed and pip dependencies
+  - sudo pip install -U pip wheel
   - sudo pip install mbed-cli
+  - sudo mbed deploy
   - sudo mbed deploy --verbose
   - sudo mbed new .
-  #- sudo pip install -r mbed-os/requirements.txt
-  - sudo pip install colorama jinja2 intelhex junit_xml mbed_ls mbed_host_tests mbed_greentea beautifulsoup4 fuzzywuzzy pyelftools jsonschema future mbed_cloud_sdk icetea
+  - sudo pip install -r mbed-os/requirements.txt
+  #- sudo pip install colorama jinja2 intelhex junit_xml mbed_ls mbed_host_tests mbed_greentea beautifulsoup4 fuzzywuzzy pyelftools jsonschema future mbed_cloud_sdk icetea
  
 script:
   # Check that example compiles with littlefs + spif
