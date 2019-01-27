@@ -43,7 +43,6 @@ before_install:
   - sudo pip install -U pip wheel
   - sudo pip install mbed-cli
   - sudo mbed deploy
-  - sudo ./toolchain_install.sh
 install:
   # Print versions we use
   - gcc --version
